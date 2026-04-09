@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container my-4">
+    <h3 class="text-center">Blog Personal</h3>
+    
+    <h4 class="text-primary text-center">Bienvenido, {{ current_user.user_name.title() }}</h4>
+
+    <div class="profile text-center">
+        <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Foto de perfil de {{ current_user.user_name }}" class="profile-img rounded-circle">
+        <p class="mt-2"><strong>Sobre mí:</strong> {{ current_user.bio }}</p>
+    </div>
+    
+    <div class="social-links text-center my-4">
+        <h5>Redes Sociales</h5>
+        {% if current_user.twitter %}
+            <a href="{{ current_user.twitter }}" class="btn btn-primary mx-1" target="_blank">Twitter</a>
+        {% endif %}
+        {% if current_user.instagram %}
+            <a href="{{ current_user.instagram }}" class="btn btn-danger mx-1" target="_blank">Instagram</a>
+        {% endif %}
+        {% if current_user.linkedin %}
+            <a href="{{ current_user.linkedin }}" class="btn btn-info mx-1" target="_blank">LinkedIn</a>
+        {% endif %}
+    </div>
+    
+    <div class="posts">
+        <h5 class="text-center">Últimas publicaciones</h5>
+        {% for post in posts %}
+            <div class="post card my-3 p-3 shadow-sm">
+                <h6 class="card-title">{{ post.title }}</h6>
+                <p class="card-text">{{ post.content }}</p>
+            </div>
+        {% else %}
+            <p class="text-center text-muted">Aún no hay publicaciones.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

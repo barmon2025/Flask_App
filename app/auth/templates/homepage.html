@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <h3>Blog Personal</h3>
+    
+    <h4 class="text-primary">Bienvenido, {{ current_user.user_name.title() }}</h4>
+    
+    <div class="profile">
+        <img src="{{ url_for('static', filename='profile.jpeg') }}" alt="Foto de perfil" class="profile-img">
+        <p><strong>Sobre mí:</strong> {{ current_user.bio }}</p>
+    </div>
+    
+    <div class="social-links">
+        <h5>Redes Sociales</h5>
+        <a href="{{ current_user.twitter }}" class="btn btn-primary">Twitter</a>
+        <a href="{{ current_user.instagram }}" class="btn btn-danger">Instagram</a>
+        <a href="{{ current_user.linkedin }}" class="btn btn-info">LinkedIn</a>
+    </div>
+    
+    <div class="posts">
+        <h5>Últimas publicaciones</h5>
+        {% for post in posts %}
+            <div class="post">
+                <h6>{{ post.title }}</h6>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

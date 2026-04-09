@@ -1,0 +1,1 @@
+pyinstaller --onefile --windowed --add-data "templates;templates" --add-data "static;static" app.py

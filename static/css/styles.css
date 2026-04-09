@@ -1,0 +1,21 @@
+img{
+    max-width: 50px;
+}
+
+img:hover{
+    max-width: 100px;
+}
+
+body{
+    background: linear-gradient(to right, #352c2c, #1a1a1a);
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+link{
+    color: #e72222;
+}
+
+a{
+    color: #e72222;
+}
